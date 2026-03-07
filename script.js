@@ -1,25 +1,53 @@
 // ===============================
-// MOBILE MENU TOGGLE
-// ===============================
-const menuToggle = document.getElementById("menu-toggle");
-const navLinks = document.getElementById("nav-links");
-
-if (menuToggle) {
-  menuToggle.addEventListener("click", function () {
-    navLinks.classList.toggle("active");
-  });
-}
-
-
-// ===============================
-// APPOINTMENT FORM SUBMIT
+// DOM LOADED
 // ===============================
 document.addEventListener("DOMContentLoaded", function () {
 
+  // ===============================
+  // MOBILE MENU TOGGLE
+  // ===============================
+  const menuToggle = document.getElementById("menu-toggle");
+  const navLinks = document.getElementById("nav-links");
+
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", function () {
+      navLinks.classList.toggle("active");
+    });
+  }
+
+
+  // ===============================
+  // SERVICES DROPDOWN TOGGLE
+  // ===============================
+  const dropdownTitles = document.querySelectorAll(".service-card.dropdown span");
+
+  dropdownTitles.forEach(function (title) {
+    title.addEventListener("click", function () {
+
+      const content = this.nextElementSibling;
+
+      // Close other dropdowns (optional but professional)
+      document.querySelectorAll(".dropdown-content").forEach(function (item) {
+        if (item !== content) {
+          item.style.display = "none";
+        }
+      });
+
+      if (content.style.display === "block") {
+        content.style.display = "none";
+      } else {
+        content.style.display = "block";
+      }
+    });
+  });
+
+
+  // ===============================
+  // APPOINTMENT FORM SUBMIT (WHATSAPP)
+  // ===============================
   const form = document.getElementById("appointmentForm");
 
   if (form) {
-
     form.addEventListener("submit", function (e) {
       e.preventDefault();
 
@@ -33,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      // 👉 YAHAN APNA REAL WHATSAPP NUMBER DALEIN (91 ke saath)
+      // 👉 YOUR WHATSAPP NUMBER (WITH COUNTRY CODE)
       const whatsappNumber = "918700980489";
 
       const message =
@@ -50,7 +78,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
       form.reset();
     });
-
   }
 
 });

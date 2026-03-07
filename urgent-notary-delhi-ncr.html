@@ -114,8 +114,7 @@ margin-top:10px;
 
 /* APPOINTMENT */
 .appointment{
-padding:60px 5%;
-background:#f1f3f5;
+padding:50px 5%;
 }
 
 form{
@@ -132,6 +131,7 @@ margin-bottom:12px;
 border-radius:4px;
 border:1px solid #ccc;
 }
+
 
 /* FOOTER */
 footer{
@@ -386,25 +386,47 @@ Call or WhatsApp us today to get assistance with your urgent notary requirement.
 </section>
 
 <!-- APPOINTMENT -->
-<section class="appointment" id="appointment">
-<h2 style="text-align:center;margin-bottom:20px;">Book Appointment</h2>
+<section id="appointment" class="appointment">
+<Center><h2 class="section-title">Book Appointment</h2></Center>
 
-<form>
-<input type="text" placeholder="Full Name" required>
-<input type="tel" placeholder="Phone Number" required>
-<select>
-<option>Select Document Type</option>
-<option>Affidavit</option>
-<option>Agreement</option>
-<option>Power of Attorney</option>
-<option>Property Document</option>
-<option>Other</option>
+<form id="appointmentForm">
+<input type="text" placeholder="Your Name" required>
+<input type="tel" placeholder="Your Phone" required>
+
+<select required>
+<option>Select Service</option>
+<option>Affidavit - Name Change</option>
+<option>Affidavit - Marriage</option>
+<option>Affidavit - Address Proof</option>
+<option>Affidavit - Birth</option>
+<option>Affidavit - Death</option>
+<option>Affidavit - Income</option>
+<option>Rent Agreement</option>
+<option>Service Agreement</option>
+<option>Hire Agreement</option>
+<option>Partnership Agreement</option>
+<option>Business Agreement</option>
+<option>Property Sale Agreement</option>
+<option>Property Purchase Agreement</option>
+<option>General Power of Attorney</option>
+<option>Special Power of Attorney</option>
+<option>Document Attestation</option>
+<option>Property Verification</option>
+<option>Company Documentation</option>
+<option>Legal Notice Drafting</option>
+<option>Will Drafting</option>
+<option>Loan Agreement</option>
+<option>Stamp Paper Documentation</option>
+<option>Gazette Name Change</option>
+<option>Vehicle Sale Agreement</option>
+<option>Translation of Legal Documents</option>
 </select>
-<textarea placeholder="Message"></textarea>
-<button type="submit" class="btn-gold">Submit</button>
+
+<textarea placeholder="Your Requirement"></textarea>
+
+<button type="submit" class="btn-gold">Submit Now</button>
 </form>
 </section>
-
 
 <!-- FLOAT BUTTONS -->
 <a href="tel:+91XXXXXXXXXX" class="float-call">📞</a>
@@ -417,6 +439,46 @@ Call or WhatsApp us today to get assistance with your urgent notary requirement.
 <a href="index.html">Home</a>
 <a href="index.html#services">Services</a>
 </footer>
+ 
+<script> // ===============================
+  // APPOINTMENT FORM SUBMIT (WHATSAPP)
+  // ===============================
+  const form = document.getElementById("appointmentForm");
 
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = form.querySelector("input[type='text']").value.trim();
+      const phone = form.querySelector("input[type='tel']").value.trim();
+      const service = form.querySelector("select").value;
+      const messageField = form.querySelector("textarea").value.trim();
+
+      if (!name || !phone || service === "Select Service") {
+        alert("Please fill all required fields.");
+        return;
+      }
+
+      // 👉 YOUR WHATSAPP NUMBER (WITH COUNTRY CODE)
+      const whatsappNumber = "918700980489";
+
+      const message =
+        "New Appointment Request:%0A%0A" +
+        "Name: " + name + "%0A" +
+        "Phone: " + phone + "%0A" +
+        "Service: " + service + "%0A" +
+        "Requirement: " + messageField;
+
+      const whatsappURL =
+        "https://wa.me/" + whatsappNumber + "?text=" + message;
+
+      window.open(whatsappURL, "_blank");
+
+      form.reset();
+    });
+  }
+
+
+</script>
 </body>
 </html>

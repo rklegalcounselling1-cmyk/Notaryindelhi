@@ -184,8 +184,21 @@ padding:50px 5%;
 text-align:center;
 }
 
+.location iframe{
+width:100%;
+max-width:900px;
+height:350px;
+border-radius:8px;
+}
+
+.map-link{
+margin-top:10px;
+}
+
 .map-link a{
 color:#b8860b;
+text-decoration:none;
+font-weight:500;
 }
 
 /* FOOTER */
@@ -221,3 +234,4 @@ background:#25D366;
 padding:14px;
 border-radius:50%;
 }
+
